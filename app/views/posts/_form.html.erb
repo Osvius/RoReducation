@@ -1,0 +1,21 @@
+<% if @post.errors.any? %>
+  <h3 style="color:red">Errors were found due saving post</h3>
+  <% @post.errors.full_messages.each do |message| %>
+    <p style="color:red"><%= message %></p>
+  <% end %>
+<% end %>
+<%= form_with(model: @post, local: true) do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :text %><br>
+    <%= form.text_area :text %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

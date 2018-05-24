@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TestAuth</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <% flash.each do |key, value| %>
+    <div class="alert alert-danger flash <%= key %>"><%= value %></div>
+  <% end %>
+  <% if user_signed_in? %>
+    <p><%= current_user.email%></p>
+    <p><%= link_to 'Log out', destroy_user_session_path, method: :delete %></p>
+  <% else %>
+    <p><%= link_to 'Sign up!', new_user_registration_path %> | <%= link_to 'Log in', new_user_session_path %></p>
+  <% end %>
+  <ul>
+    <li><%= link_to 'Posts', posts_path %></li>
+  </ul>
+    <%= yield %>
+  </body>
+</html>

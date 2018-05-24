@@ -1,0 +1,10 @@
+<h2>List of posts titles</h2>
+<h5>Rendered by partial</h5>
+<%= render @posts %>
+
+<!--<h5>Rendered using ".each"</h5>-->
+<%# @posts.each do |post| %>
+<!--  <p>+ <%#= post.title %></p>-->
+<%# end %>
+
+<%= link_to "New post", new_post_path %>
