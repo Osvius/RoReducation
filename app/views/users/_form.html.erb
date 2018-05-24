@@ -1,0 +1,21 @@
+<%= form_with(model: @user, local: true, url: profile_update_path) do |form| %>
+  <% if @user.errors.any? %>
+    <p class="alert alert-danger">Errors were found</p>
+    <% @user.errors.full_messages.each do |message| %>
+      <p class="alert alert-danger"><%= message %></p>
+    <% end %>
+  <% end %>
+  <p>
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </p>
+  <p>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :surname %>
+    <%= form.text_field :surname %>
+  </p>
+  <%= form.submit %>
+<% end %>
