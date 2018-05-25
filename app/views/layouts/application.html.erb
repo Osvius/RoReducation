@@ -10,7 +10,18 @@
 
   <body>
   <% flash.each do |key, value| %>
-    <div class="alert alert-danger flash <%= key %>"><%= value %></div>
+    <div class="alert alert-dismissable alert-
+      <%= key %>">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <% if value.class == Array %>
+        <% value.each do |message| %>
+          <%= message %>
+          </br>
+        <% end %>
+      <% else %>
+        <%= value %>
+      <% end %>
+    </div>
   <% end %>
   <% if user_signed_in? %>
     <p><%= current_user.email%></p>
