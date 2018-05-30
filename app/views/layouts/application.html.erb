@@ -23,14 +23,8 @@
       <% end %>
     </div>
   <% end %>
-  <% if user_signed_in? %>
-    <p><%= current_user.email%></p>
-    <p><%= link_to 'Log out', destroy_user_session_path, method: :delete %> | <%= link_to 'Edit my info', edit_user_registration_path %></p>
-  <% else %>
-    <p><%= link_to 'Sign up!', new_user_registration_path %> | <%= link_to 'Log in', new_user_session_path %></p>
-  <% end %>
   <ul>
-    <li><%= link_to 'Posts', posts_path %></li>
+    <li><%= link_to "Sign Up", new_users_path %></li>
   </ul>
     <%= yield %>
   </body>
