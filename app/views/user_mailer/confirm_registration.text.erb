@@ -1,0 +1,3 @@
+Your email <%= @user.email %> were registered on our site
+To confirm it click on the link below.
+<%= confirm_registration_users_url(token: @user.verify_token) %>

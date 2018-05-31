@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   include EmailValidatable
   has_secure_password
+  before_create :verify_token_generate
+
   # has_many :posts
   #
   # enum role: [:user, :admin, :moderator]
@@ -15,4 +17,19 @@ class User < ApplicationRecord
   # def set_default_role
   #   self.role ||= :user
   # end
+
+  def email_verify
+    self.verified = true
+    self.verify_token = nil
+    save!(validate: false)
+  end
+
+  private
+
+    def verify_token_generate
+      if self.verify_token.blank?
+        self.verify_token = SecureRandom.urlsafe_base64.to_s
+      end
+    end
+
 end
