@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  get '/profile', to: 'profile#show'
+  get '/profile/edit', to: 'profile#edit'
+  patch '/profile/edit', to: 'profile#update'
+  delete '/profile/delete', to: 'profile#destroy'
 
   get 'welcome/index'
 

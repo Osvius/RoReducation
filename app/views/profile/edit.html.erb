@@ -1,0 +1,19 @@
+<h2>Edit profile</h2>
+<%= form_with(model: current_user, local: true, url: profile_edit_path) do |form| %>
+  <%= render 'shared/error_messages', object: @user %>
+  <p>
+    <%= form.label :email %>
+    <%= form.text_field :email, readonly: true %>
+  </p>
+  <p>
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </p>
+  <p>
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </p>
+  <p>
+    <%= form.submit "Save" %> | <%= link_to "Cancel", profile_path %>
+  </p>
+<% end %>

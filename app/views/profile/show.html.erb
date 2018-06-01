@@ -1,0 +1,19 @@
+<h2>My profile</h2>
+<h5>Personal information</h5>
+<table>
+  <tr>
+    <td>Email:</td>
+    <td><%= @user.email %></td>
+  </tr>
+  <tr>
+    <td>First Name:</td>
+    <td><%= @user.first_name %></td>
+  </tr>
+  <tr>
+    <td>Last Name:</td>
+    <td><%= @user.last_name %></td>
+  </tr>
+</table>
+<ul>
+  <li><%= link_to "Edit profile", profile_edit_path %></li>
+</ul>
