@@ -1,0 +1,15 @@
+<h2>Login</h2>
+<%= form_for(:session, url: login_path) do |form| %>
+  <table>
+    <tr>
+      <td><%= form.label :email %></td>
+      <td><%= form.text_field :email %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :password %></td>
+      <td><%= form.password_field :password %></td>
+    </tr>
+      <td><%= form.submit "Sign In" %></td>
+    </tr>
+  </table>
+<% end %>

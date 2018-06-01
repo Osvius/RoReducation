@@ -24,7 +24,13 @@
     </div>
   <% end %>
   <ul>
-    <li><%= link_to "Sign Up", new_users_path %></li>
+    <% if logged_in? %>
+      <li><%= link_to "My profile", users_path(current_user) %></li>
+      <li><%= link_to "Log out", logout_path, method: :delete %></li>
+    <% else %>
+      <li><%= link_to "Sign Up", new_users_path %></li>
+      <li><%= link_to "Sign In", login_path %></li>
+    <% end %>
   </ul>
     <%= yield %>
   </body>

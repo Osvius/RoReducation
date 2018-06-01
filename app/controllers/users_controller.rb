@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   def index
   end
 
+  def show
+
+  end
+
   def new
     @user = User.new
   end
@@ -23,7 +27,8 @@ class UsersController < ApplicationController
     if user
       user.email_verify
       flash[:success] = "Email confirmed successfully"
-      redirect_to root_url
+      log_in user
+      redirect_to users_path
     else
       flash[:error]= "User doen't exist"
       redirect_to root_url
