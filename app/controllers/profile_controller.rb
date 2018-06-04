@@ -16,6 +16,19 @@ class ProfileController < ApplicationController
     end
   end
 
+  def change_password
+
+  end
+
+  def update_password
+    if @user.update_with_context(user_update_pass_params, :password_change)
+      flash[:success] = "Password changed successfully"
+      redirect_to profile_path
+    else
+      render 'change_password'
+    end
+  end
+
   def destroy
 
   end
@@ -28,6 +41,10 @@ class ProfileController < ApplicationController
 
   def user_update_params
     params.require(:user).permit(:email, :first_name, :last_name)
+  end
+
+  def user_update_pass_params
+    params.require(:user).permit(:password, :password_confirmation, :old_password)
   end
 
   def set_user

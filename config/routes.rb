@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/profile/edit', to: 'profile#edit'
   patch '/profile/edit', to: 'profile#update'
   delete '/profile/delete', to: 'profile#destroy'
+  get '/profile/password/change', to: 'profile#change_password'
+  patch '/profile/password/change', to: 'profile#update_password'
 
   get 'welcome/index'
 
