@@ -3,6 +3,14 @@ class User < ApplicationRecord
   has_secure_password
   before_create :verify_token_generate
   attr_accessor :remember_token, :old_password
+  has_attached_file :avatar, styles: {
+      thumb: '100x100>',
+      square: '200x200#',
+      medium: '300x300>'
+  }
+  validates_attachment_content_type :avatar, content_type: /\Aimage/
+
+  validates_attachment :avatar, size: { less_than: 5.megabytes }
 
   validate :is_user_password, on: [:password_change]
   # attr_reader :old_password

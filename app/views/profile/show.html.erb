@@ -2,6 +2,11 @@
 <h5>Personal information</h5>
 <table>
   <tr>
+    <td>
+      <%= image_tag @user.avatar.url(:square) %>
+    </td>
+  </tr>
+  <tr>
     <td>Email:</td>
     <td><%= @user.email %></td>
   </tr>
