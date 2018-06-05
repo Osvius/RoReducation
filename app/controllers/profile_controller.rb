@@ -40,7 +40,7 @@ class ProfileController < ApplicationController
   end
 
   def user_update_params
-    params.require(:user).permit(:email, :first_name, :last_name)
+    params.require(:user).permit(:email, :first_name, :last_name, :avatar)
   end
 
   def user_update_pass_params

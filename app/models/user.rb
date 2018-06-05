@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_secure_password
   before_create :verify_token_generate
   attr_accessor :remember_token, :old_password
+  mount_uploader :avatar, AvatarUploader
 
   validate :is_user_password, on: [:password_change]
   # attr_reader :old_password
@@ -19,6 +20,7 @@ class User < ApplicationRecord
   validates :first_name, length: {in: 2..100}, allow_blank: true
   validates :last_name, length: {in: 2..100}, allow_blank: true
   validates :old_password, presence: true, on: [:password_change]
+  validates :avatar, file_size: { less_than: 5.megabytes }
 
   # def set_default_role
   #   self.role ||= :user

@@ -2,6 +2,12 @@
 <h5>Personal information</h5>
 <table>
   <tr>
+    <td>My Avatar:</td>
+    <td>
+      <%= link_to(image_tag(@user.avatar.thumb.url, alt: 'Avatar'), @user.avatar.url, target: '_blank') if @user.avatar? %>
+    </td>
+  </tr>
+  <tr>
     <td>Email:</td>
     <td><%= @user.email %></td>
   </tr>
