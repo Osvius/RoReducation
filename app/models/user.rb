@@ -11,8 +11,8 @@ class User < ApplicationRecord
 
   # has_many :posts
   #
-  # enum role: [:user, :admin, :moderator]
-  # after_initialize :set_default_role, :if => :new_record?
+  enum role: [:user, :admin, :moderator]
+  after_initialize :set_default_role, :if => :new_record?
 
   validates :email, presence: true, uniqueness: true, length: {maximum: 50}, email: true, on: :create
   validates :password, presence: true, confirmation: true, length: {in: 5..100}, on: [:create, :password_change]
@@ -22,9 +22,9 @@ class User < ApplicationRecord
   validates :old_password, presence: true, on: [:password_change]
   validates :avatar, file_size: { less_than: 5.megabytes }
 
-  # def set_default_role
-  #   self.role ||= :user
-  # end
+  def set_default_role
+    self.role ||= :user
+  end
 
   def update_with_context(attributes, context)
     with_transaction_returning_status do
