@@ -1,14 +1,22 @@
 Rails.application.routes.draw do
-  devise_scope :user do
-    get 'users/password/change', to: 'users/registrations#change_password', as: "change_user_password"
-    put 'users/password/update', to: 'users/registrations#update_password', as: "update_user_password"
-    get 'users/password/update', to: 'users/registrations#update_password'
-  end
-  devise_for :users, controllers: {registrations: "users/registrations", passwords: "users/passwords"}
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+  get '/profile', to: 'profile#show'
+  get '/profile/edit', to: 'profile#edit'
+  patch '/profile/edit', to: 'profile#update'
+  delete '/profile/delete', to: 'profile#destroy'
+  get '/profile/password/change', to: 'profile#change_password'
+  patch '/profile/password/change', to: 'profile#update_password'
+
   get 'welcome/index'
 
-  resources :posts
+  resource :users do
+    member do
+      get 'confirm_registration'
+    end
+  end
+  # resources :posts
 
   root 'welcome#index'
 end

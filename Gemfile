@@ -54,7 +54,11 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'pg'
-gem 'devise'
-gem 'pundit'
 gem 'bootstrap-sass'
+gem 'bcrypt'
 gem 'byebug'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'file_validators'
+gem 'fog-aws'
+gem 'figaro'
